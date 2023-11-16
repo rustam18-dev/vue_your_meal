@@ -5,9 +5,9 @@ export const useCartStore = defineStore('cartStore', () => {
     const count = ref(0)
     const carts = ref([])
 
-    
+
     const countCart = computed(() => {
-       return carts.value.reduce((total, cart) => total + cart.quantity, 0) 
+       return carts.value.reduce((total, cart) => total + cart.quantity, 0)
     })
 
     const isInCart = product => {
@@ -15,7 +15,7 @@ export const useCartStore = defineStore('cartStore', () => {
 
         return carts.value.find(item => item.id === product.id)
     }
-    
+
     const addToCart = product => {
 
         const isCart = carts.value.find(item => item.id === product.id)
@@ -23,7 +23,7 @@ export const useCartStore = defineStore('cartStore', () => {
         if  (isCart) {
             isCart.quantity += 1
         } else {
-            carts.value.push({...product, quantity: 1})
+            carts.value.push({...product})
         }
     }
 

@@ -1,11 +1,11 @@
 <template>
     <div :class="['modal modal_product', {'modal_open': modalStore.isOpenModal}]">
       <div class="modal__main modal-product">
-        <div class="modal-product__container">
-          <h2 class="modal-product__title">Мясная бомба</h2>
+        <div class="modal-product__container" v-for="product of modalStore.products" :key="product.id">
+          <h2 class="modal-product__title">{{ product.name }}</h2>
 
           <div class="modal-product__content">
-            <img src="src/assets/img/photo-5.jpg" alt="Мясная бомба" class="modal-product__image">
+            <img :src="product.img" alt="Мясная бомба" class="modal-product__image">
 
             <p class="modal-product__description">Супер мясное наслаждение! Большая рубленая котлета из свежего говяжего мяса покорит вас своей сочностью, а хрустящие листья салата добавят свежести.</p>
 
@@ -20,24 +20,23 @@
                 <li class="ingredients__item">Соус сорчичный</li>
               </ul>
 
-              <p class="ingredients__calories">520г, ккал 430</p>
+              <p class="ingredients__calories">{{ product.weight }}, ккал 430</p>
             </div>
 
             <div class="modal-product__footer">
 
               <div class="modal-product__add">
-                <button class="modal-product__btn">Добавить</button>
+                <button class="modal-product__btn" @click="cartStore.addToCart(product)">Добавить</button>
 
                 <div class="modal-product__count count">
-                  <button class="count__minus">-</button>
-                  <p class="count__amount">1</p>
-                  <button class="count__plus">+</button>
+                  <button class="count__minus" @click="cartStore.diminutionQuantity(product)">-</button>
+                  <p class="count__amount">{{ product.quantity }}</p>
+                  <button class="count__plus" @click="cartStore.addingQuantity(product)">+</button>
                 </div>
               </div>
 
-
             </div>
-            <p class="modal-product__price">239
+            <p class="modal-product__price">{{ product.price }}
               <span class="currency">₽</span>
             </p>
           </div>
@@ -54,7 +53,15 @@
 </template>
 
 <script setup>
-import { useModalStore } from '../store/modalStore';
+import { useModalStore } from '@/store/modalStore.js';
+import { useCartStore } from '@/store/cartStore.js';
+import { onUpdated} from "vue";
 
 const modalStore = useModalStore();
+const cartStore = useCartStore();
+
+onUpdated(() => {
+
+})
+
 </script>

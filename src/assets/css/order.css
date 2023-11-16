@@ -158,10 +158,7 @@
 
 
 @media (min-width: 768px) {
-  .order {
-    width: 145px;
-    transition: width 0.06s ease-in-out;
-  }
+
 
   .order.order_open {
     width: 300px;

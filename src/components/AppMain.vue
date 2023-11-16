@@ -5,7 +5,7 @@
     <section class="catalog">
       <div class="container catalog__container">
         <div class="catalog__order order">
-          <section :class="['order__wrapper', {'order_open': order_open }]"> 
+          <section :class="['order__wrapper', {'order_open': order_open }]">
             <div class="order__wrap-title" tabindex="0" role="button" @click="order_open = !order_open">
               <h2 class="order__title">Корзина</h2>
 
