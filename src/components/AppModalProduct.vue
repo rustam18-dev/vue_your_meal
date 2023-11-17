@@ -36,7 +36,7 @@
               </div>
 
             </div>
-            <p class="modal-product__price">{{ product.price }}
+            <p class="modal-product__price">{{ cartStore.priceOfProduct(product) ||  product.price }}
               <span class="currency">₽</span>
             </p>
           </div>

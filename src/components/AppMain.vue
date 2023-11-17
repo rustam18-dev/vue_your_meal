@@ -38,7 +38,7 @@
               <div class="order__total">
                 <p>Итого</p>
                 <p>
-                  <span class="order__total-amount">1279</span>
+                  <span class="order__total-amount">{{ cartStore.totalPriceOfProducts }}</span>
                   <span class="currency">₽</span>
                 </p>
               </div>
@@ -47,7 +47,7 @@
 
               <div class="order__wrap-appeal">
                 <p class="order__appeal">Бесплатная доставка</p>
-                <button class="order__close">Свернуть</button>
+                <button class="order__close" @click="order_open = false">Свернуть</button>
               </div>
             </div>
 
@@ -98,6 +98,7 @@ import {ref} from 'vue'
 
 const cartStore = useCartStore();
 const modalStore = useModalStore();
+
 const order_open = ref(false)
 
 

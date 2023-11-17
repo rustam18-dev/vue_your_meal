@@ -1,56 +1,62 @@
 import {defineStore} from 'pinia'
-import {ref, computed} from 'vue'
+import { useModalStore} from "@/store/modalStore";
+import {ref, computed, reactive, watch} from 'vue'
+import gsap from 'gsap'
 
 export const useCartStore = defineStore('cartStore', () => {
-    const count = ref(0)
-    const carts = ref([])
+  const count = ref(0)
+  const carts = ref([])
 
+  const countCart = computed(() => {
+    return carts.value.reduce((total, cart) => total + cart.quantity, 0)
+  })
 
-    const countCart = computed(() => {
-       return carts.value.reduce((total, cart) => total + cart.quantity, 0)
-    })
+  const totalPriceOfProducts = computed(() => {
+    return carts.value.reduce((total, cart) => total + (cart.price * cart.quantity), 0)
+  })
 
-    const isInCart = product => {
-        if ( carts.value.length === 0) return false
+  const priceOfProduct = product => {
+    return  product.price * product.quantity
+  }
 
-        return carts.value.find(item => item.id === product.id)
+  const isInCart = product => {
+    if ( carts.value.length === 0) return false
+
+    return carts.value.find(item => item.id === product.id)
+  }
+
+  const addToCart = product => {
+    carts.value.push({...product})
+    const modalStore = useModalStore();
+
+    modalStore.isOpenModal = false
+  }
+
+  const addingQuantity = product => {
+    product.quantity += 1
+  }
+
+  const diminutionQuantity = product => {
+    if (product.quantity > 1) {
+      return product.quantity -= 1;
     }
 
-    const addToCart = product => {
-
-        const isCart = carts.value.find(item => item.id === product.id)
-
-        if  (isCart) {
-            isCart.quantity += 1
-        } else {
-            carts.value.push({...product})
-        }
-    }
-
-    const addingQuantity = product => {
-        product.quantity += 1
-    }
-
-    const diminutionQuantity = product => {
-        if (product.quantity > 1) {
-            return product.quantity -= 1;
-        }
-
-        carts.value = carts.value.filter(item => item.id !== product.id);
-    };
+    carts.value = carts.value.filter(item => item.id !== product.id);
+  };
 
 
+  return {
+    count,
+    carts,
 
-    return {
-        count,
-        carts,
+    countCart,
+    totalPriceOfProducts,
 
-        countCart,
-
-        isInCart,
-        addToCart,
-        addingQuantity,
-        diminutionQuantity,
-    }
+    priceOfProduct,
+    isInCart,
+    addToCart,
+    addingQuantity,
+    diminutionQuantity,
+  }
 
 })
