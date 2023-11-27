@@ -11,14 +11,31 @@
           <span class="header__title-text header__title-text_red">сочные бургеры!</span>
         </h1>
 
-        <p class="header__appeal">Бесплатная доставка от 599₽</p>
+        <p class="header__appeal"></p>
       </div>
     </div>
   </header>
 </template>
 
-<script>
+<script setup>
+import gsap from 'gsap'
+import TextPlugin from 'gsap/TextPlugin'
+import {onMounted} from "vue";
 
+onMounted(() => {
+  gsap.registerPlugin(TextPlugin)
+
+  const tl = gsap.timeline();
+
+  tl.to('.header__title', {
+    duration: 1,
+    text: 'Только самые сочные бургеры!'
+  }).to('.header__appeal', {
+    duration: .5,
+    text: 'Бесплатная доставка от 599₽'
+  })
+
+})
 </script>
 
 <style scoped>

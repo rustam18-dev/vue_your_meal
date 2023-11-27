@@ -20,7 +20,7 @@ export const useCartStore = defineStore('cartStore', () => {
   }
 
   const isInCart = product => {
-    if ( carts.value.length === 0) return false
+    if (carts.value.length === 0) return false
 
     return carts.value.find(item => item.id === product.id)
   }
@@ -29,7 +29,7 @@ export const useCartStore = defineStore('cartStore', () => {
     carts.value.push({...product})
     const modalStore = useModalStore();
 
-    modalStore.isOpenModal = false
+    modalStore.isOpenModalProduct = false
   }
 
   const addingQuantity = product => {

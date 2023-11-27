@@ -9,7 +9,7 @@
             <div class="order__wrap-title" tabindex="0" role="button" @click="order_open = !order_open">
               <h2 class="order__title">Корзина</h2>
 
-              <span class="order__count">{{cartStore.countCart}}</span>
+              <span class="order__count">{{ cartStore.countCart }}</span>
             </div>
 
             <div v-if="cartStore.countCart > 0" class="order__wrap_list">
@@ -43,10 +43,10 @@
                 </p>
               </div>
 
-              <button class="order__submit">Оформить заказ</button>
+              <button class="order__submit" @click="modalStore.openingAndClosingModalDelivery()">Оформить заказ</button>
 
               <div class="order__wrap-appeal">
-                <p class="order__appeal">Бесплатная доставка</p>
+                <p class="order__appeal">{{ cartStore.totalPriceOfProducts > 599 ? 'Бесплатная доставка' : 'Доставка - 199₽'}}</p>
                 <button class="order__close" @click="order_open = false">Свернуть</button>
               </div>
             </div>
@@ -74,7 +74,7 @@
 
                   <p class="product__weight">{{ product.weight }}</p>
 
-                  <button v-if="!cartStore.isInCart(product)" class="product__add" type="button" @click="modalStore.openingAndClosingModal(product)">Добавить</button>
+                  <button v-if="!cartStore.isInCart(product)" class="product__add" type="button" @click="modalStore.openingAndClosingModalProduct(product)">Добавить</button>
                   <button v-else class="product__in_cart" type="button">В корзине</button>
                 </article>
               </li>
@@ -86,15 +86,18 @@
   </main>
 
   <AppModalProduct />
+  <AppModalDelivery/>
 </template>
 
 <script setup>
 import dataProducts from "/products.json"
 import AppModalProduct from "./AppModalProduct.vue";
+import AppModalDelivery from "@/components/AppModalDelivery.vue";
 import AppNavbar from "../components/AppNavbar.vue"
 import { useCartStore } from "../store/cartStore";
 import { useModalStore } from "../store/modalStore";
 import {ref} from 'vue'
+
 
 const cartStore = useCartStore();
 const modalStore = useModalStore();

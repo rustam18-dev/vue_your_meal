@@ -1,20 +1,27 @@
 import {defineStore} from 'pinia'
-import {ref, computed} from 'vue'
+import {ref} from 'vue'
 
 export const useModalStore = defineStore('modalStore', () => {
-  const isOpenModal = ref(false);
+  const isOpenModalProduct = ref(false);
+  const isOpenModalDelivery = ref(false);
   const products = ref([])
 
-  const openingAndClosingModal = product => {
+  const openingAndClosingModalProduct = product => {
     products.value = [];
 
     products.value.push({...product, quantity: 1})
-    isOpenModal.value = !isOpenModal.value
+    isOpenModalProduct.value = !isOpenModalProduct.value
+  };
+
+  const openingAndClosingModalDelivery = () => {
+    return  isOpenModalDelivery.value = !isOpenModalDelivery.value
   };
 
   return {
     products,
-    isOpenModal,
-    openingAndClosingModal
+    isOpenModalProduct,
+    isOpenModalDelivery,
+    openingAndClosingModalProduct,
+    openingAndClosingModalDelivery
   }
 })

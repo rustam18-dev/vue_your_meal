@@ -1,5 +1,5 @@
 <template>
-    <div :class="['modal modal_product', {'modal_open': modalStore.isOpenModal}]">
+    <div :class="['modal modal_product', {'modal_open': modalStore.isOpenModalProduct}]">
       <div class="modal__main modal-product">
         <div class="modal-product__container" v-for="product of modalStore.products" :key="product.id">
           <h2 class="modal-product__title">{{ product.name }}</h2>
@@ -36,13 +36,13 @@
               </div>
 
             </div>
-            <p class="modal-product__price">{{ cartStore.priceOfProduct(product) ||  product.price }}
+            <p class="modal-product__price">{{ animatePrice(cartStore.priceOfProduct(product) || product.price) }}
               <span class="currency">₽</span>
             </p>
           </div>
         </div>
 
-        <button class="modal__close" @click="modalStore.openingAndClosingModal()">
+        <button class="modal__close" @click="modalStore.openingAndClosingModalProduct()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <rect x="5.07422" y="5.28247" width="1" height="20" transform="rotate(-45 5.07422 5.28247)"/>
             <rect x="5.78125" y="19.4246" width="1" height="20" transform="rotate(-135 5.78125 19.4246)"/>
@@ -55,13 +55,16 @@
 <script setup>
 import { useModalStore } from '@/store/modalStore.js';
 import { useCartStore } from '@/store/cartStore.js';
-import { onUpdated} from "vue";
+import { ref, watch } from 'vue';
 
 const modalStore = useModalStore();
 const cartStore = useCartStore();
 
-onUpdated(() => {
+const animatePrice = price => {
 
-})
+ return price
+};
 
 </script>
+
+
