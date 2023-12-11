@@ -96,11 +96,12 @@ import AppModalDelivery from "@/components/AppModalDelivery.vue";
 import AppNavbar from "../components/AppNavbar.vue"
 import { useCartStore } from "../store/cartStore";
 import { useModalStore } from "../store/modalStore";
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 
 const cartStore = useCartStore();
 const modalStore = useModalStore();
+
 
 const order_open = ref(false)
 

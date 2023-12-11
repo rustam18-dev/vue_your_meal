@@ -28,10 +28,10 @@ onMounted(() => {
   const tl = gsap.timeline();
 
   tl.to('.header__title', {
-    duration: 1,
+    duration: 2,
     text: 'Только самые сочные бургеры!'
   }).to('.header__appeal', {
-    duration: .5,
+    duration: 1,
     text: 'Бесплатная доставка от 599₽'
   })
 

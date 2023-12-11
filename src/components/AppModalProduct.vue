@@ -36,7 +36,7 @@
               </div>
 
             </div>
-            <p class="modal-product__price">{{ animatePrice(cartStore.priceOfProduct(product) || product.price) }}
+            <p class="modal-product__price">{{ cartStore.priceOfProduct(product) || product.price }}
               <span class="currency">₽</span>
             </p>
           </div>
@@ -55,15 +55,10 @@
 <script setup>
 import { useModalStore } from '@/store/modalStore.js';
 import { useCartStore } from '@/store/cartStore.js';
-import { ref, watch } from 'vue';
 
 const modalStore = useModalStore();
 const cartStore = useCartStore();
 
-const animatePrice = price => {
-
- return price
-};
 
 </script>
 

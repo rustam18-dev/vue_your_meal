@@ -1,38 +1,47 @@
 [
   {
     "name": "Бургеры",
+    "slug": "burger",
     "className": "navigation__button_burger"
   },
   {
     "name": "Закуски",
+    "slug": "snack",
     "className": "navigation__button_snack"
   },
   {
     "name": "Хот-доги",
+    "slug": "hot-dog",
     "className": "navigation__button_hot-dog"
   },
   {
     "name": "Комбо",
+    "slug": "combo",
     "className": "navigation__button_combo"
   },
   {
     "name": "Шаурма",
+    "slug": "shawarma",
     "className": "navigation__button_shawarma"
   },
   {
     "name": "Пицца",
+    "slug": "pizza",
     "className": "navigation__button_pizza"
   },
   {
     "name": "Вок",
+    "slug": "wok",
     "className": "navigation__button_wok"
   },
   {
     "name": "Десерты",
+    "slug": "dessert",
     "className": "navigation__button_dessert"
   },
   {
     "name": "Соусы",
+    "slug": "sauce",
     "className": "navigation__button_sauce"
   }
 ]
