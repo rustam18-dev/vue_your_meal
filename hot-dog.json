@@ -1,0 +1,26 @@
+{
+  "name": "Хот-доги",
+  "products": [
+    {
+      "id": 1,
+      "name": "Домашний хот-дог",
+      "price": 290,
+      "weight": "250г",
+      "img": "src/assets/img/photo-5.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Жгучий хот-дог",
+      "price": 239,
+      "weight": "245г",
+      "img": "src/assets/img/photo-20.png"
+    },
+    {
+      "id": 3,
+      "name": "Классический хот-дог",
+      "price": 220,
+      "weight": "215г",
+      "img": "src/assets/img/photo-21.png"
+    }
+  ]
+}

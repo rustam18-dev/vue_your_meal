@@ -58,11 +58,11 @@
         </div>
 
         <div class="catalog__wrapper">
-          <h2 class="catalog__title">Бургеры</h2>
+          <h2 class="catalog__title">{{ productsData.name }}</h2>
 
           <div class="catalog__wrap_list">
             <ul class="catalog__list">
-              <li class="catalog__item" v-for="product in dataProducts" :key="product.id">
+              <li class="catalog__item" v-for="product in productsData.products" :key="product.id">
                 <article class="product">
                   <img :src="product.img" alt="Мясная бомба" class="product__image">
 
@@ -90,15 +90,49 @@
 </template>
 
 <script setup>
-import dataProducts from "/products.json"
+import burgerData from "/burger.json"
+import snackData from "/snack.json"
+import hotDogData from "/hot-dog.json"
+
 import AppModalProduct from "./AppModalProduct.vue";
 import AppModalDelivery from "@/components/AppModalDelivery.vue";
 import AppNavbar from "../components/AppNavbar.vue"
-import { useCartStore } from "../store/cartStore";
-import { useModalStore } from "../store/modalStore";
-import { ref } from 'vue'
 
+import { useCartStore } from "@/store/cartStore";
+import { useModalStore } from "@/store/modalStore";
+import {onMounted, ref, watch} from 'vue'
+import {useRoute} from "vue-router";
 
+const route = useRoute()
+
+const productsData = ref([])
+
+onMounted(() => {
+  if (route.query.catalog === 'burger') {
+    productsData.value = burgerData
+  }
+  if (route.query.catalog === 'snack') {
+    productsData.value = snackData
+  }
+  if (route.query.catalog === 'hot-dog') {
+    productsData.value = hotDogData
+  }
+
+})
+watch(() => route.query.catalog, (newCatalog) => {
+  if (newCatalog === 'burger') {
+   return  productsData.value = burgerData
+  }
+  if (newCatalog === 'snack') {
+   return  productsData.value = snackData
+  }
+  if (newCatalog === 'hot-dog') {
+    return productsData.value = hotDogData
+  }
+  if (newCatalog.length > 1) {
+   return  productsData.value = []
+  }
+});
 const cartStore = useCartStore();
 const modalStore = useModalStore();
 

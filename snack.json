@@ -1,0 +1,26 @@
+{
+  "name": "Закуски",
+  "products": [
+    {
+      "id": 1,
+      "name": "Начос",
+      "price": 250,
+      "weight": "220г",
+      "img": "src/assets/img/photo-5.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Картошка фри",
+      "price": 245,
+      "weight": "180г",
+      "img": "src/assets/img/photo-1.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Луковые кольца",
+      "price": 230,
+      "weight": "160г",
+      "img": "src/assets/img/photo-3.jpg"
+    }
+  ]
+}

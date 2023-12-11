@@ -29,10 +29,6 @@ onMounted(() => {
   }
 
   gsap.registerPlugin(TextPlugin);
-
-  watch(() => route.query.catalog, (newCatalog) => {
-    currentCatalog.value = newCatalog;
-  });
 });
 
 const changeCatalog = slug => {
@@ -41,7 +37,11 @@ const changeCatalog = slug => {
 
 const activeCatalog = slug => {
   return currentCatalog.value === slug;
-};
+}
+
+watch(() => route.query.catalog, (newCatalog) => {
+  currentCatalog.value = newCatalog;
+});
 </script>
 
 <style scoped>
