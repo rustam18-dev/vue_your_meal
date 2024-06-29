@@ -1,7 +1,6 @@
 import {defineStore} from 'pinia'
 import { useModalStore} from "@/store/modalStore";
-import {ref, computed, reactive, watch} from 'vue'
-import gsap from 'gsap'
+import {ref, computed} from 'vue'
 
 export const useCartStore = defineStore('cartStore', () => {
   const count = ref(0)
