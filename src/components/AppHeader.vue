@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container header__container">
       <svg class="header__logo" viewBox="0 0 199 44" role="img" aria-label="Логотип YourMeal">
-        <use href="src/assets/img/sprite.svg#logo"/>
+        <use href="../assets/img/sprite.svg#logo"/>
       </svg>
 
       <div class="header__title-container">
